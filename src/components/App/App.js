@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./App.css";
 import { robots } from "../../robots";
 import CardList from "../CardList/CardList";
 import Search from "../Search/Search";
@@ -24,7 +25,7 @@ export default class App extends Component {
     return (
       <>
         <header className="tc">
-          <h1>RoboFriends</h1>
+          <h1 className="f1">RoboFriends</h1>
           <Search searchChange={this.onSearchChange} />
         </header>
         <main className="tc">
