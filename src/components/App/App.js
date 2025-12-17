@@ -22,11 +22,15 @@ export default class App extends Component {
     );
 
     return (
-      <div className="tc">
-        <h1>RoboFriends</h1>
-        <Search searchChange={this.onSearchChange} />
-        <CardList robots={filteredRobots} />
-      </div>
+      <>
+        <header className="tc">
+          <h1>RoboFriends</h1>
+          <Search searchChange={this.onSearchChange} />
+        </header>
+        <main className="tc">
+          <CardList robots={filteredRobots} />
+        </main>
+      </>
     );
   }
 }
