@@ -2,6 +2,7 @@ import { Component } from "react";
 import "./App.css";
 import CardList from "../CardList/CardList";
 import Search from "../Search/Search";
+import Scroll from "../Scroll/Scroll";
 
 export default class App extends Component {
   constructor() {
@@ -38,7 +39,9 @@ export default class App extends Component {
           <Search searchChange={this.onSearchChange} />
         </header>
         <main>
-          <CardList robots={filteredRobots} />
+          <Scroll>
+            <CardList robots={filteredRobots} />
+          </Scroll>
         </main>
       </>
     );
