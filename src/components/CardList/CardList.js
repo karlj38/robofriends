@@ -1,4 +1,4 @@
-import Card from "../Card/Card";
+import Card from "../Card";
 
 export default function CardList({ robots }) {
   return (

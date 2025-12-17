@@ -1,8 +1,8 @@
 import { Component } from "react";
 import "./App.css";
-import CardList from "../CardList/CardList";
-import Search from "../Search/Search";
-import Scroll from "../Scroll/Scroll";
+import CardList from "../../components/CardList";
+import Search from "../../components/Search";
+import Scroll from "../../components/Scroll";
 
 export default class App extends Component {
   constructor() {
@@ -24,15 +24,15 @@ export default class App extends Component {
   };
 
   render() {
-    if (!this.state.robots.length) {
-      return <h1 className="f1">Loading...</h1>;
-    }
+    const { searchField, robots } = this.state;
 
-    const filteredRobots = this.state.robots.filter((robot) =>
-      robot.name.toLowerCase().includes(this.state.searchField.toLowerCase())
+    const filteredRobots = robots.filter((robot) =>
+      robot.name.toLowerCase().includes(searchField.toLowerCase())
     );
 
-    return (
+    return !robots.length ? (
+      <h1 className="f1">Loading...</h1>
+    ) : (
       <>
         <header>
           <h1 className="f1">RoboFriends</h1>
