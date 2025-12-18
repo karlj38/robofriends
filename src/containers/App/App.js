@@ -3,6 +3,7 @@ import "./App.css";
 import CardList from "../../components/CardList";
 import Search from "../../components/Search";
 import Scroll from "../../components/Scroll";
+import ErrorBoundary from "../../components/ErrorBoundary";
 
 export default class App extends Component {
   constructor() {
@@ -40,7 +41,9 @@ export default class App extends Component {
         </header>
         <main>
           <Scroll>
-            <CardList robots={filteredRobots} />
+            <ErrorBoundary>
+              <CardList robots={filteredRobots} />
+            </ErrorBoundary>
           </Scroll>
         </main>
       </>

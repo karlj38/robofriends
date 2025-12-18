@@ -1,6 +1,8 @@
 import Card from "../Card";
 
 export default function CardList({ robots }) {
+  if (!robots) throw new Error("No robots");
+
   return (
     <>
       {robots.map((robot) => {
