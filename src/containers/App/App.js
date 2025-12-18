@@ -1,9 +1,6 @@
 import { Component } from "react";
 import "./App.css";
-import CardList from "../../components/CardList";
-import Search from "../../components/Search";
-import Scroll from "../../components/Scroll";
-import ErrorBoundary from "../../components/ErrorBoundary";
+import { CardList, ErrorBoundary, Search, Scroll } from "../../components";
 
 export default class App extends Component {
   constructor() {
