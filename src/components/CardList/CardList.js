@@ -1,4 +1,4 @@
-import Card from "../Card";
+import { Card } from "../";
 
 export default function CardList({ robots }) {
   if (!robots) throw new Error("No robots");
