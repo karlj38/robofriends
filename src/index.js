@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { applyMiddleware, createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import { thunk } from "redux-thunk";
 import { Provider } from "react-redux";
 import "./index.css";
@@ -9,7 +9,12 @@ import reportWebVitals from "./reportWebVitals";
 import "tachyons";
 import rootReducer from "./reducers";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
