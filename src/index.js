@@ -1,14 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import "./index.css";
 import { App } from "./containers";
 import reportWebVitals from "./reportWebVitals";
 import "tachyons";
+import { searchReducer } from "./reducers";
+
+const store = createStore(searchReducer);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
   </React.StrictMode>
 );
 
