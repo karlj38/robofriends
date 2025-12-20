@@ -1,19 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { applyMiddleware, createStore } from "redux";
+import { thunk } from "redux-thunk";
 import { Provider } from "react-redux";
 import "./index.css";
 import { App } from "./containers";
 import reportWebVitals from "./reportWebVitals";
 import "tachyons";
-import { searchReducer } from "./reducers";
+import rootReducer from "./reducers";
 
-const store = createStore(searchReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+      <App />
     </Provider>
   </React.StrictMode>
 );

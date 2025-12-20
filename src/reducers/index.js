@@ -1,3 +1,8 @@
-import searchReducer from "./searchReducer";
+import search from "./searchReducer";
+import robots from "./robotsReducer";
+import { combineReducers } from "redux";
 
-export { searchReducer };
+export default combineReducers({
+  search,
+  robots,
+});

@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { CardList, ErrorBoundary, Search, Scroll } from "../../components";
-import { searchAction } from "../../actions";
+import { robotsAction, searchAction } from "../../actions";
 
 export default function App() {
   const dispatch = useDispatch();
-  const [robots, setRobots] = useState([]);
-  const searchTerm = useSelector((state) => state.searchTerm);
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((users) => setRobots(users));
-  }, []);
+  const { isPending, error, robots } = useSelector((state) => state.robots);
+  const { searchTerm } = useSelector((state) => state.search);
 
   const onSearchChange = (event) => dispatch(searchAction(event.target.value));
 
@@ -21,9 +15,14 @@ export default function App() {
     robot.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  return !robots.length ? (
-    <h1 className="f1">Loading...</h1>
-  ) : (
+  useEffect(() => {
+    dispatch(robotsAction());
+  }, [dispatch]);
+
+  if (isPending) return <h1 className="f1">Loading...</h1>;
+  if (error) return <h1 className="f1">Something went wrong</h1>;
+
+  return (
     <>
       <header>
         <h1 className="f1">RoboFriends</h1>
