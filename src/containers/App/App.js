@@ -2,21 +2,24 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { CardList, ErrorBoundary, Search, Scroll } from "../../components";
-import { robotsAction, searchAction } from "../../actions";
+import { fetchRobots } from "../../slices/robotsSlice";
+import { setSearch } from "../../slices/searchSlice";
 
 export default function App() {
   const dispatch = useDispatch();
-  const { isPending, error, robots } = useSelector((state) => state.robots);
-  const { searchTerm } = useSelector((state) => state.search);
+  const { isPending, error, robots } = useSelector(
+    (state) => state.robotsSlice
+  );
+  const { searchTerm } = useSelector((state) => state.searchSlice);
 
-  const onSearchChange = (event) => dispatch(searchAction(event.target.value));
+  const onSearchChange = (event) => dispatch(setSearch(event.target.value));
 
   const filteredRobots = robots.filter((robot) =>
     robot.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   useEffect(() => {
-    dispatch(robotsAction());
+    dispatch(fetchRobots());
   }, [dispatch]);
 
   if (isPending) return <h1 className="f1">Loading...</h1>;
