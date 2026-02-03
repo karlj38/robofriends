@@ -1,25 +1,52 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Robofriends",
+  "name": "Robofriends",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "icons/16.png",
+      "sizes": "16x16",
+      "type": "image/png"
     },
     {
-      "src": "logo192.png",
+      "src": "icons/32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "icons/512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "screenshots": [
+    {
+      "src": "screenshots/Screenshot 2026-02-03 173518.webp",
+      "sizes": "1033x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Home screen showing main content"
+    },
+    {
+      "src": "screenshots/Screenshot 2026-02-03 173540.webp",
+      "sizes": "720X1287",
+      "type": "image/webp",
+      "platform": "ios",
+      "label": "Home screen showing main content"
+    }
+  ],
+  "start_url": "https://karlj38.github.io/robofriends",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "orientation": "any"
 }
