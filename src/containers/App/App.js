@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-import { CardList, ErrorBoundary, Search, Scroll } from "../../components";
+import { CardList, ErrorBoundary, Header, Scroll } from "../../components";
 import { fetchRobots } from "../../slices/robotsSlice";
-import { setSearch } from "../../slices/searchSlice";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -11,8 +10,6 @@ export default function App() {
     (state) => state.robotsSlice
   );
   const { searchTerm } = useSelector((state) => state.searchSlice);
-
-  const onSearchChange = (event) => dispatch(setSearch(event.target.value));
 
   const filteredRobots = robots.filter((robot) =>
     robot.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -27,10 +24,7 @@ export default function App() {
 
   return (
     <>
-      <header>
-        <h1 className="f1">RoboFriends</h1>
-        <Search searchChange={onSearchChange} />
-      </header>
+      <Header />
       <main>
         <Scroll>
           <ErrorBoundary>

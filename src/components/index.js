@@ -1,7 +1,8 @@
 import Card from "./Card";
 import CardList from "./CardList";
+import ErrorBoundary from "./ErrorBoundary";
+import Header from "./Header/Header";
 import Search from "./Search";
 import Scroll from "./Scroll";
-import ErrorBoundary from "./ErrorBoundary";
 
-export { Card, CardList, Search, Scroll, ErrorBoundary };
+export { Card, CardList, ErrorBoundary, Header, Search, Scroll };
