@@ -4,16 +4,19 @@ import "./App.css";
 import { CardList, ErrorBoundary, Header, Scroll } from "../../components";
 import { fetchRobots } from "../../slices/robotsSlice";
 
+export function filterRobots(robots, searchTerm) {
+  return robots.filter((robot) =>
+    robot.name.toLowerCase().includes(searchTerm),
+  );
+}
+
 export default function App() {
   const dispatch = useDispatch();
   const { isPending, error, robots } = useSelector(
-    (state) => state.robotsSlice
+    (state) => state.robotsSlice,
   );
   const { searchTerm } = useSelector((state) => state.searchSlice);
-
-  const filteredRobots = robots.filter((robot) =>
-    robot.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredRobots = filterRobots(robots, searchTerm);
 
   useEffect(() => {
     dispatch(fetchRobots());
