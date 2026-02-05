@@ -17,6 +17,6 @@ describe("CardList", () => {
   it("handles empty array", () => {
     const { container } = render(<CardList robots={[]} />);
 
-    expect(container.innerHTML).toBe("");
+    expect(container).toBeEmptyDOMElement();
   });
 });
