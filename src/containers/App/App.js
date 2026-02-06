@@ -1,8 +1,7 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./App.css";
 import { CardList, ErrorBoundary, Header, Scroll } from "../../components";
-import { fetchRobots } from "../../slices/robotsSlice";
+import { useGetRobotsQuery } from "../../services/robotsService";
 
 export function filterRobots(robots, searchTerm) {
   return robots.filter((robot) =>
@@ -11,19 +10,13 @@ export function filterRobots(robots, searchTerm) {
 }
 
 export default function App() {
-  const dispatch = useDispatch();
-  const { isPending, error, robots } = useSelector(
-    (state) => state.robotsSlice,
-  );
+  const { data: robots, error, isLoading } = useGetRobotsQuery();
   const { searchTerm } = useSelector((state) => state.searchSlice);
-  const filteredRobots = filterRobots(robots, searchTerm);
 
-  useEffect(() => {
-    dispatch(fetchRobots());
-  }, [dispatch]);
-
-  if (isPending) return <h1 className="f1">Loading...</h1>;
+  if (isLoading) return <h1 className="f1">Loading...</h1>;
   if (error) return <h1 className="f1">Something went wrong</h1>;
+
+  const filteredRobots = filterRobots(robots, searchTerm);
 
   return (
     <>

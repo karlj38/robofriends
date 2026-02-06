@@ -1,9 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { robotsSlice, searchSlice } from "./slices";
+import { robotsAPI } from "./services";
+import { searchSlice } from "./slices";
 
 export default function setupStore(preloadedState) {
   return configureStore({
-    reducer: { robotsSlice, searchSlice },
+    reducer: {
+      [robotsAPI.reducerPath]: robotsAPI.reducer,
+      searchSlice,
+    },
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(robotsAPI.middleware),
     preloadedState,
   });
 }
