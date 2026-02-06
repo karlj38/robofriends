@@ -28,6 +28,11 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "!node_modules/@reduxjs/toolkit/query/react"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
