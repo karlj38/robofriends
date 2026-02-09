@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import ErrorBoundary from "./ErrorBoundary";
 
 describe("ErrorBoundary", () => {
@@ -13,7 +13,7 @@ describe("ErrorBoundary", () => {
   // Temporarily suppress console errors so we don't clog the logs
   const realError = console.error;
   beforeEach(() => {
-    console.error = jest.fn();
+    console.error = vitest.fn();
   });
   afterEach(() => {
     console.error = realError;
