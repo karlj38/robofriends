@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CardList > renders 1`] = `
+<div>
+  <article
+    class="bg-light-green dib br3 ma2 pa3 grow bw2 shadow-5"
+  >
+    <img
+      alt="robots"
+      fetchpriority="high"
+      height="200"
+      src="https://robohash.org/123?size=200x200"
+      width="200"
+    />
+    <div>
+      <h2>
+        name
+      </h2>
+      <p>
+        e@mail.com
+      </p>
+    </div>
+  </article>
+</div>
+`;
