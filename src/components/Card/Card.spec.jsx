@@ -1,11 +1,11 @@
-import { render } from "@testing-library/react";
+import { render } from "vitest-browser-react";
 import Card from "./Card";
 
 describe("Card", () => {
-  it("renders", () => {
+  it("renders", async () => {
     const robot = { email: "e@mail.com", id: 123, name: "name" };
 
-    const { container } = render(<Card robot={robot} />);
+    const { container } = await render(<Card robot={robot} />);
 
     expect(container).toMatchSnapshot();
   });

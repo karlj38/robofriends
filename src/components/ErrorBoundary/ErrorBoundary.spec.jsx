@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render } from "vitest-browser-react";
 import ErrorBoundary from "./ErrorBoundary";
 
 describe("ErrorBoundary", () => {
@@ -19,8 +19,8 @@ describe("ErrorBoundary", () => {
     console.error = realError;
   });
 
-  it("renders", () => {
-    const { container } = render(
+  it("renders", async () => {
+    const { container } = await render(
       <ErrorBoundary>
         <MockComponent />
       </ErrorBoundary>,
@@ -29,13 +29,13 @@ describe("ErrorBoundary", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it("handles error", () => {
-    const wrapper = render(
+  it("handles error", async () => {
+    const { container } = await render(
       <ErrorBoundary>
         <MockComponentWithError />
       </ErrorBoundary>,
     );
 
-    expect(wrapper.container).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

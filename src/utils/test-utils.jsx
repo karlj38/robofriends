@@ -1,9 +1,8 @@
-import { render } from "@testing-library/react";
-import { userEvent } from "@testing-library/user-event";
+import { render } from "vitest-browser-react";
 import { Provider } from "react-redux";
 import setupStore from "../store";
 
-export function renderWithProviders(ui, extendedRenderOptions = {}) {
+export async function renderWithProviders(ui, extendedRenderOptions = {}) {
   const {
     preloadedState = {},
     // Automatically create a store instance if no store was passed in
@@ -15,10 +14,10 @@ export function renderWithProviders(ui, extendedRenderOptions = {}) {
     <Provider store={store}>{children}</Provider>
   );
 
-  // Return an object with the store, user, and all of RTL's query functions
+  const screen = await render(ui, { wrapper: Wrapper, ...renderOptions });
+  // Return an object with the store, and the result of rendering
   return {
     store,
-    user: userEvent,
-    ...render(ui, { wrapper: Wrapper, ...renderOptions }),
+    ...screen,
   };
 }
