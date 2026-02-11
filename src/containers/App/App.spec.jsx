@@ -1,4 +1,8 @@
-import { filterRobots } from "./App";
+import { http, HttpResponse } from "msw";
+import { afterAll, afterEach, beforeAll } from "vitest";
+import { page } from "vitest/browser";
+import { httpWorker } from "../../setupTests";
+import App, { filterRobots } from "./App";
 
 describe("filterRobots", () => {
   const robots = [
@@ -19,5 +23,61 @@ describe("filterRobots", () => {
 
   it("returns partial matches", () => {
     expect(filterRobots(robots, "a")).toEqual([robots[0], robots[2]]);
+  });
+});
+
+//=================================================================================================
+
+describe("App", () => {
+  beforeAll(async () => await httpWorker.start({ quiet: true }));
+  afterEach(() => httpWorker.resetHandlers());
+  afterAll(() => httpWorker.stop());
+
+  it("renders initial loading state", async () => {
+    const { store, ...screen } = await page.renderWithProviders(<App />);
+
+    expect(screen.container).toMatchSnapshot();
+  });
+
+  // ----------------------------------------------------------------------------------------------
+
+  it("renders on API error", async () => {
+    httpWorker.use(
+      http.get("https://jsonplaceholder.typicode.com/users", () =>
+        HttpResponse.json(null, {
+          status: 500,
+        }),
+      ),
+    );
+
+    const { store, ...screen } = await page.renderWithProviders(<App />);
+
+    const loadingText = screen.getByText("Loading...");
+    await expect.element(loadingText).toBeInTheDocument();
+    await expect.element(loadingText).not.toBeInTheDocument();
+
+    const errorText = screen.getByText("Something went wrong");
+    await expect.element(errorText).toBeInTheDocument();
+
+    expect(screen.container).toMatchSnapshot();
+  });
+
+  // ----------------------------------------------------------------------------------------------
+
+  it("fetches and renders robots", async () => {
+    const { store, ...screen } = await page.renderWithProviders(<App />);
+
+    const loadingText = screen.getByText("Loading...");
+    await expect.element(loadingText).toBeInTheDocument();
+    await expect.element(loadingText).not.toBeInTheDocument();
+
+    const robots =
+      store.getState().robotsAPI.queries["getRobots(undefined)"].data;
+    expect(robots.length).toBe(3);
+
+    const robotName = screen.getByText("Leanne Graham");
+    await expect.element(robotName).toBeInTheDocument();
+
+    expect(screen.container).toMatchSnapshot();
   });
 });
