@@ -1,4 +1,4 @@
-import { page } from "vitest/browser";
+import { page, userEvent } from "vitest/browser";
 import Search from "./Search";
 
 describe("Search", () => {
@@ -6,5 +6,14 @@ describe("Search", () => {
     const { container } = await page.renderWithProviders(<Search />);
 
     expect(container).toMatchSnapshot();
+  });
+
+  it("updates searchTerm state", async () => {
+    const { store, ...screen } = await page.renderWithProviders(<Search />);
+
+    const searchInput = screen.getByPlaceholder("search robots");
+    await userEvent.type(searchInput, "clem");
+
+    expect(store.getState().searchSlice.searchTerm).toBe("clem");
   });
 });
