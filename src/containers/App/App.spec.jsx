@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 import { afterAll, afterEach, beforeAll } from "vitest";
-import { page } from "vitest/browser";
+import { page, userEvent } from "vitest/browser";
 import { httpWorker } from "../../setupTests";
 import App, { filterRobots } from "./App";
 
@@ -77,6 +77,25 @@ describe("App", () => {
 
     const robotName = screen.getByText("Leanne Graham");
     await expect.element(robotName).toBeInTheDocument();
+
+    expect(screen.container).toMatchSnapshot();
+  });
+
+  it("filters robots by searchTerm", async () => {
+    const { store, ...screen } = await page.renderWithProviders(<App />);
+
+    const robotName = screen.getByText("Leanne Graham");
+    await expect.element(robotName).toBeInTheDocument();
+
+    const searchInput = screen.getByPlaceholder("search robots");
+    await expect.element(searchInput).toBeInTheDocument();
+
+    await userEvent.type(searchInput, "clem");
+
+    await expect.element(robotName).not.toBeInTheDocument();
+
+    const filteredRobotName = screen.getByText("Clementine Bauch");
+    await expect.element(filteredRobotName).toBeInTheDocument();
 
     expect(screen.container).toMatchSnapshot();
   });
