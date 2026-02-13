@@ -1,5 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`CardList > handles empty array 1`] = `<div />`;
+
 exports[`CardList > renders 1`] = `
 <div>
   <article
