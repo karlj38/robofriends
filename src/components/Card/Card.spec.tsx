@@ -1,9 +1,11 @@
+import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-react";
+import type { Robot } from "../../types/";
 import Card from "./Card";
 
 describe("Card", () => {
   it("renders", async () => {
-    const robot = { email: "e@mail.com", id: 123, name: "name" };
+    const robot: Robot = { email: "e@mail.com", id: 123, name: "name" };
 
     const { container } = await render(<Card robot={robot} />);
 
