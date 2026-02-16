@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { render } from "vitest-browser-react";
 import Scroll from "./Scroll";
 
