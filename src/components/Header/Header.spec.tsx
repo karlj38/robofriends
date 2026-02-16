@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { page } from "vitest/browser";
 import Header from "./Header";
 
