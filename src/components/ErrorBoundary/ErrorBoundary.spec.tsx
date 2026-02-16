@@ -1,3 +1,4 @@
+import { afterEach, beforeEach, describe, expect, it, vitest } from "vitest";
 import { render } from "vitest-browser-react";
 import ErrorBoundary from "./ErrorBoundary";
 
