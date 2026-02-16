@@ -1,8 +1,10 @@
+import { describe, expect, it } from "vitest";
 import { http, HttpResponse } from "msw";
 import { afterAll, afterEach, beforeAll } from "vitest";
 import { page, userEvent } from "vitest/browser";
 import { httpWorker } from "../../setupTests";
 import App, { filterRobots } from "./App";
+import type { Robot } from "../../types";
 
 describe("filterRobots", () => {
   const robots = [
@@ -71,8 +73,8 @@ describe("App", () => {
     await expect.element(loadingText).toBeInTheDocument();
     await expect.element(loadingText).not.toBeInTheDocument();
 
-    const robots =
-      store.getState().robotsAPI.queries["getRobots(undefined)"].data;
+    const robots = store.getState().robotsAPI.queries["getRobots(undefined)"]
+      ?.data as Array<Robot>;
     expect(robots.length).toBe(3);
 
     const robotName = screen.getByText("Leanne Graham");
