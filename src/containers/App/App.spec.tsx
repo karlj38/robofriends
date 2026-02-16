@@ -7,7 +7,7 @@ import App, { filterRobots } from "./App";
 import type { Robot } from "../../types";
 
 describe("filterRobots", () => {
-  const robots = [
+  const robots: Array<Robot> = [
     { name: "Alice", email: "alice@mail.com", id: 123 },
     { name: "Bob", email: "bob@mail.com", id: 456 },
     { name: "Charlie", email: "charlie@mail.com", id: 789 },

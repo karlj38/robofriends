@@ -4,7 +4,7 @@ import { searchSlice } from "./slices";
 
 const rootReducer = combineReducers({
   [robotsAPI.reducerPath]: robotsAPI.reducer,
-  searchSlice,
+  searchSlice: searchSlice.reducer,
 });
 
 export function setupStore(preloadedState?: PreloadedState) {
