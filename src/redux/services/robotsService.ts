@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import type { Robot } from "../../types";
 
 // Define a service using a base URL and expected endpoints
 const robotsAPI = createApi({
@@ -7,7 +8,7 @@ const robotsAPI = createApi({
     baseUrl: "https://jsonplaceholder.typicode.com/",
   }),
   endpoints: (builder) => ({
-    getRobots: builder.query({
+    getRobots: builder.query<Robot[], void>({
       query: () => "users",
     }),
   }),
@@ -15,6 +16,4 @@ const robotsAPI = createApi({
 
 export default robotsAPI;
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
 export const { useGetRobotsQuery } = robotsAPI;
