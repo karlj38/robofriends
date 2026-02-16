@@ -1,9 +1,10 @@
-import { useDispatch } from "react-redux";
-import { setSearch } from "../../slices/searchSlice";
+import { useAppDispatch } from "../../redux/hooks";
+import { setSearchTerm } from "../../redux/slices/searchSlice";
 
 export default function Search() {
-  const dispatch = useDispatch();
-  const onSearchChange = (event) => dispatch(setSearch(event.target.value));
+  const dispatch = useAppDispatch();
+  const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    dispatch(setSearchTerm(event.target.value));
 
   return (
     <div className="pa2">
