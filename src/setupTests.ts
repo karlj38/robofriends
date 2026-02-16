@@ -3,6 +3,12 @@ import { page } from "vitest/browser";
 import { http, HttpResponse } from "msw";
 import { setupWorker } from "msw/browser";
 
+declare module "vitest/browser" {
+  interface BrowserPage {
+    renderWithProviders: typeof renderWithProviders;
+  }
+}
+
 page.extend({ renderWithProviders });
 
 //-------------------------------------------------------------------------------------------------

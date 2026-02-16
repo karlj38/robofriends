@@ -20,7 +20,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "postbuild": "purgecss --css build/static/css/*.css --content build/index.html build/static/js/*.js --output build/static/css",
-    "test:browser": "vitest --config=vitest.browser.config.js",
+    "test:browser": "vitest --config=vitest.browser.config.ts",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

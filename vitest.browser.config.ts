@@ -12,6 +12,6 @@ export default defineConfig({
       instances: [{ browser: "chromium" }],
     },
     globals: true,
-    setupFiles: "./src/setupTests.js",
+    setupFiles: "./src/setupTests.ts",
   },
 });
