@@ -26,6 +26,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitest/browser-playwright": "^4.0.18",
+    "babel-plugin-react-compiler": "^1.0.0",
     "gh-pages": "^6.3.0",
     "msw": "^2.12.10",
     "typescript": "^5.9.3",
