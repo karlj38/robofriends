@@ -13,10 +13,10 @@
     "tachyons": "^4.12.0"
   },
   "scripts": {
-    "build": "next build",
+    "build": "next build --webpack",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "start": "next start",
     "test": "vitest --config=vitest.browser.config.ts"
   },
