@@ -13,12 +13,12 @@
     "tachyons": "^4.12.0"
   },
   "scripts": {
+    "build": "next build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "postbuild": "purgecss --css build/static/css/*.css --content build/index.html build/static/js/*.js --output build/static/css",
-    "test:browser": "vitest --config=vitest.browser.config.ts"
+    "dev": "next dev",
+    "start": "next start",
+    "test": "vitest --config=vitest.browser.config.ts"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^8.0.0",
