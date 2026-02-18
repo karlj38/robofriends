@@ -1,4 +1,4 @@
-import type { Robot } from "../types";
+import type { Robot } from "#/types";
 
 export function filterRobots(
   robots: Array<Robot> | undefined,

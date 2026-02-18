@@ -16,7 +16,7 @@ export function setupStore(preloadedState?: PreloadedState) {
   });
 }
 
-const store = setupStore({});
+const store = setupStore();
 
 export default store;
 
