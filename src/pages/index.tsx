@@ -1,22 +1,14 @@
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-// import { Provider } from "react-redux";
-// import store from "#/redux/store";
+import { wrapper } from "#/redux/store";
+import {
+  getRobots,
+  getRunningQueriesThunk,
+  useGetRobotsQuery,
+} from "#/redux/services/robotsService";
 import { filterRobots } from "#/utils/app-utils";
 import { CardList, ErrorBoundary, Header, Scroll } from "#/components";
-import { Robot } from "#/types";
-
-const robots: Array<Robot> = [
-  { name: "Alice", email: "alice@mail.com", id: 123 },
-  { name: "Bob", email: "bob@mail.com", id: 456 },
-  { name: "Charlie", email: "charlie@mail.com", id: 789 },
-];
 
 export default function Home() {
-  // const { data: robots, error, isLoading } = useGetRobotsQuery();
-  // const searchTerm = useAppSelector(getSearchTerm);
-  const isLoading = false;
-  const error = false;
+  const { data: robots, error, isLoading } = useGetRobotsQuery();
   const searchTerm = "";
 
   if (isLoading) return <h1 className="f1">Loading...</h1>;
@@ -37,3 +29,15 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async () => {
+    store.dispatch(getRobots.initiate());
+
+    await Promise.all(store.dispatch(getRunningQueriesThunk()));
+
+    return {
+      props: {},
+    };
+  },
+);

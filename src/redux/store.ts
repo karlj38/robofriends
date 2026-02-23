@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { createWrapper } from "next-redux-wrapper";
 import { robotsAPI } from "./services";
 import { searchSlice } from "./slices";
 
@@ -7,20 +8,17 @@ const rootReducer = combineReducers({
   searchSlice: searchSlice.reducer,
 });
 
-export function setupStore(preloadedState?: PreloadedState) {
+export function setupStore() {
   return configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(robotsAPI.middleware),
-    preloadedState,
   });
 }
 
-const store = setupStore();
-
-export default store;
-
-export type PreloadedState = Parameters<typeof rootReducer>[0];
-export type RootState = ReturnType<typeof store.getState>;
+// export type PreloadedState = Parameters<typeof rootReducer>[0];
 export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<AppStore["getState"]>;
+export type AppDispatch = AppStore["dispatch"];
+
+export const wrapper = createWrapper<AppStore>(setupStore);
