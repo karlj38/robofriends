@@ -6,10 +6,12 @@ import {
 } from "#/redux/services/robotsService";
 import { filterRobots } from "#/utils/app-utils";
 import { CardList, ErrorBoundary, Header, Scroll } from "#/components";
+import { useAppSelector } from "#/redux/hooks";
+import { getSearchTerm } from "#/redux/slices/searchSlice";
 
 export default function Home() {
   const { data: robots, error, isLoading } = useGetRobotsQuery();
-  const searchTerm = "";
+  const searchTerm = useAppSelector(getSearchTerm);
 
   if (isLoading) return <h1 className="f1">Loading...</h1>;
   if (error) return <h1 className="f1">Something went wrong</h1>;
