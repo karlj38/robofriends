@@ -20,14 +20,9 @@ export default function Home() {
 
   return (
     <>
-      <Header />
-      <main>
         <Scroll>
-          <ErrorBoundary>
             <CardList robots={filteredRobots} />
-          </ErrorBoundary>
         </Scroll>
-      </main>
     </>
   );
 }

@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { wrapper } from "#/redux/store";
 import { Provider } from "react-redux";
+import { Layout } from "#/components";
 
 export default function App({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
@@ -22,7 +23,9 @@ export default function App({ Component, ...rest }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Robofriends</title>
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </Provider>
   );
 }
