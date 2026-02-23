@@ -5,7 +5,7 @@ import {
   useGetRobotsQuery,
 } from "#/redux/services/robotsService";
 import { filterRobots } from "#/utils/app-utils";
-import { CardList, ErrorBoundary, Header, Scroll } from "#/components";
+import { CardList, Scroll, Search } from "#/components";
 import { useAppSelector } from "#/redux/hooks";
 import { getSearchTerm } from "#/redux/slices/searchSlice";
 
@@ -20,9 +20,10 @@ export default function Home() {
 
   return (
     <>
-        <Scroll>
-            <CardList robots={filteredRobots} />
-        </Scroll>
+      <Search />
+      <Scroll>
+        <CardList robots={filteredRobots} />
+      </Scroll>
     </>
   );
 }
