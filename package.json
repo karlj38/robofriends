@@ -13,9 +13,10 @@
     "tachyons": "^4.12.0"
   },
   "scripts": {
-    "prebuild": "npm run clean",
+    "prebuild": "npm run clean-unix",
     "build": "next build",
     "clean": "if exist .next rmdir /s /q .next",
+    "clean-unix": "rm -f -R ./next",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "predev": "npm run clean",
