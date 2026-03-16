@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { HYDRATE } from "next-redux-wrapper";
-import type { Robot } from "../../types";
+import type { Robot } from "#/types";
 
 // Define a service using a base URL and expected endpoints
 const robotsAPI = createApi({
@@ -17,6 +17,9 @@ const robotsAPI = createApi({
     getRobots: builder.query<Robot[], void>({
       query: () => "users",
     }),
+    getRobotById: builder.query<Robot, number>({
+      query: (id) => `users/${id}`,
+    }),
   }),
 });
 
@@ -25,8 +28,9 @@ export default robotsAPI;
 // Export hooks for usage in functional components
 export const {
   useGetRobotsQuery,
+  useGetRobotByIdQuery,
   util: { getRunningQueriesThunk },
 } = robotsAPI;
 
 // export endpoints for use in SSR
-export const { getRobots } = robotsAPI.endpoints;
+export const { getRobotById, getRobots } = robotsAPI.endpoints;
