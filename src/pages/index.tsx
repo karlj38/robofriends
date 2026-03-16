@@ -14,7 +14,7 @@ export default function Home() {
   const searchTerm = useAppSelector(getSearchTerm);
 
   if (isLoading) return <Loader />;
-  if (error) return <h1 className="f1">Something went wrong</h1>;
+  if (error) throw error;
 
   const filteredRobots = filterRobots(robots, searchTerm);
 
