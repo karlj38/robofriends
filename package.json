@@ -13,14 +13,15 @@
     "tachyons": "^4.12.0"
   },
   "scripts": {
-    "prebuild": "npm run clean-unix",
+    "prebuild": "npm run clean",
     "build": "next build",
+    "prebuild-unix": "npm run clean-unix",
+    "build-unix": "next build",
     "clean": "if exist .next rmdir /s /q .next",
     "clean-unix": "rm -f -R ./next",
     "predev": "npm run clean",
     "dev": "next dev",
-    "start": "next start",
-    "test": "vitest --config=vitest.browser.config.ts"
+    "start": "next start"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^8.0.0",
