@@ -1,6 +1,12 @@
+import type { Robot } from "#/types";
+import type { Action, PayloadAction } from "@reduxjs/toolkit";
+import type { RootState } from "#/redux/store";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { HYDRATE } from "next-redux-wrapper";
-import type { Robot } from "#/types";
+
+function isHydrateAction(action: Action): action is PayloadAction<RootState> {
+  return action.type === HYDRATE;
+}
 
 // Define a service using a base URL and expected endpoints
 const robotsAPI = createApi({
@@ -8,8 +14,8 @@ const robotsAPI = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://jsonplaceholder.typicode.com/",
   }),
-  extractRehydrationInfo(action, { reducerPath }) {
-    if (action.type === HYDRATE) {
+  extractRehydrationInfo(action, { reducerPath }): any {
+    if (isHydrateAction(action)) {
       return action.payload[reducerPath];
     }
   },
