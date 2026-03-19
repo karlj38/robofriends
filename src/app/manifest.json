@@ -44,7 +44,7 @@
       "label": "Home screen showing main content"
     }
   ],
-  "start_url": "https://karlj38.github.io/robofriends",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",

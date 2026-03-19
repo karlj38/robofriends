@@ -1,3 +1,4 @@
+"use client";
 import { useAppDispatch } from "#/redux/hooks";
 import { setSearchTerm } from "#/redux/slices/searchSlice";
 

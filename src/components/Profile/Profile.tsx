@@ -1,3 +1,4 @@
+"use client";
 import type { Robot } from "#/types";
 
 export default function Profile({

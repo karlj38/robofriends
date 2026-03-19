@@ -1,3 +1,4 @@
+"use client";
 import type { IScrollProps } from "./";
 import styles from "./Scroll.module.css";
 

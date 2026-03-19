@@ -1,21 +1,9 @@
 import Card from "./Card";
 import CardList from "./CardList";
-import ErrorBoundary from "./ErrorBoundary";
 import Header from "./Header/Header";
-import Layout from "./Layout";
-import Loader from "./Loader";
 import Profile from "./Profile";
 import Search from "./Search";
 import Scroll from "./Scroll";
+import StoreProvider from "./StoreProvider";
 
-export {
-  Card,
-  CardList,
-  ErrorBoundary,
-  Header,
-  Layout,
-  Loader,
-  Profile,
-  Search,
-  Scroll,
-};
+export { Card, CardList, Header, Profile, Search, Scroll, StoreProvider };
