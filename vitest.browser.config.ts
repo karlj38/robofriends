@@ -14,5 +14,6 @@ export default defineConfig({
       // https://vitest.dev/config/browser/playwright
       instances: [{ browser: "chromium" }],
     },
+    setupFiles: "./src/setupTests.ts",
   },
 });
