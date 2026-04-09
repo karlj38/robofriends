@@ -1,32 +1,26 @@
 module.exports = {
-  plugins: [
+  plugins: {
     // restore the Next.js default behavior
-    "postcss-flexbugs-fixes",
-    [
-      "postcss-preset-env",
-      {
-        autoprefixer: {
-          flexbox: "no-2009",
-        },
-        stage: 3,
-        features: {
-          "custom-properties": false,
-        },
+    "postcss-flexbugs-fixes": {},
+    "postcss-preset-env": {
+      autoprefixer: {
+        flexbox: "no-2009",
       },
-    ],
-    [
-      // configure PurgeCSS
-      "@fullhuman/postcss-purgecss",
-      {
-        content: [
-          ".src/pages/**/*.{js,jsx,ts,tsx}",
-          "./src/components/**/*.{js,jsx,ts,tsx}",
-        ],
-        defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-        safelist: {
-          standard: ["html", "body"],
-        },
+      stage: 3,
+      features: {
+        "custom-properties": false,
       },
-    ],
-  ],
+    },
+    // configure PurgeCSS
+    "@fullhuman/postcss-purgecss": {
+      content: [
+        ".src/pages/**/*.{js,jsx,ts,tsx}",
+        "./src/components/**/*.{js,jsx,ts,tsx}",
+      ],
+      defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+      safelist: {
+        standard: ["html", "body"],
+      },
+    },
+  },
 };
