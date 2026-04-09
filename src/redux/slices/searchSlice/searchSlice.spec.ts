@@ -1,6 +1,6 @@
-import { afterAll, beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import { setSearchTerm } from "./";
-import { type RootState, setupStore } from "../../store";
+import { type RootState, makeStore } from "#/redux/store";
 import type { EnhancedStore } from "@reduxjs/toolkit";
 import type { SearchSliceState } from "./";
 
@@ -9,7 +9,7 @@ const initialState: SearchSliceState = { searchTerm: "" };
 
 describe("searchSlice", () => {
   beforeEach(() => {
-    store = setupStore();
+    store = makeStore();
   });
 
   it("returns initial state", () => {
