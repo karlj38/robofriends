@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Profile > renders 1`] = `
+<div>
+  <article
+    class="bg-light-green dib br3 ma2 pa3 bw2 shadow-5"
+  >
+    <img
+      alt="name profile"
+      fetchpriority="high"
+      height="500"
+      src="https://robohash.org/123?size=500x500"
+      width="500"
+    />
+    <div>
+      <h2>
+        name
+      </h2>
+      <p>
+        website
+      </p>
+      <p>
+        e@mail.com
+      </p>
+    </div>
+  </article>
+</div>
+`;
