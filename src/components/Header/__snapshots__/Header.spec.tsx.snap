@@ -3,21 +3,16 @@
 exports[`Header > renders 1`] = `
 <div>
   <header>
-    <h1
-      class="f1"
+    <a
+      class="_headerLink_ff673_1"
+      href="/"
     >
-      RoboFriends
-    </h1>
-    <div
-      class="pa2"
-    >
-      <input
-        class="pa3 ba b--green bg-lightest-blue tc"
-        id="search"
-        placeholder="search robots"
-        type="search"
-      />
-    </div>
+      <h1
+        class="f1 sega"
+      >
+        RoboFriends
+      </h1>
+    </a>
   </header>
 </div>
 `;

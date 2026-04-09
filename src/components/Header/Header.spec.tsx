@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { page } from "vitest/browser";
+import { render } from "vitest-browser-react";
 import Header from "./Header";
 
 describe("Header", () => {
   it("renders", async () => {
-    const { container } = await page.renderWithProviders(<Header />);
+    const { container } = await render(<Header />);
 
     expect(container).toMatchSnapshot();
   });

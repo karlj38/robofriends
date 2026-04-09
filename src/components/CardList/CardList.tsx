@@ -1,6 +1,6 @@
 "use client";
 import styles from "./CardList.module.css";
-import { Card } from "..";
+import { Card } from "../";
 import Link from "next/link";
 import type { Robot } from "#/types";
 import { filterRobots } from "#/utils/app-utils";

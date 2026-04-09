@@ -5,7 +5,12 @@ import Card from "./Card";
 
 describe("Card", () => {
   it("renders", async () => {
-    const robot: Robot = { email: "e@mail.com", id: 123, name: "name" };
+    const robot: Robot = {
+      email: "e@mail.com",
+      id: 123,
+      name: "name",
+      website: "website",
+    };
 
     const { container } = await render(<Card robot={robot} />);
 
