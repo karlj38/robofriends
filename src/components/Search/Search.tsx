@@ -1,9 +1,10 @@
 "use client";
-import { useAppDispatch } from "#/redux/hooks";
-import { setSearchTerm } from "#/redux/slices/searchSlice";
+import { useAppDispatch, useAppSelector } from "#/redux/hooks";
+import { getSearchTerm, setSearchTerm } from "#/redux/slices/searchSlice";
 
 export default function Search() {
   const dispatch = useAppDispatch();
+  const searchTerm = useAppSelector(getSearchTerm);
   const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     dispatch(setSearchTerm(event.target.value));
 
@@ -15,6 +16,7 @@ export default function Search() {
         type="search"
         placeholder="search robots"
         onChange={onSearchChange}
+        value={searchTerm}
       />
     </div>
   );

@@ -10,6 +10,7 @@ exports[`Search > renders 1`] = `
       id="search"
       placeholder="search robots"
       type="search"
+      value=""
     />
   </div>
 </div>
